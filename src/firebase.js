@@ -1,8 +1,9 @@
+//firebase利用の雛形記述
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { initializeApp } from "firebase/app"; //firebase利用のため initializeAppインポート
+import { getAnalytics } from "firebase/analytics"; //analitycs利用のためインポート(※今回利用してない)
+import { getAuth, GoogleAuthProvider } from "firebase/auth"; //Google認証機能 を利用のためインポート
+import { getFirestore } from "firebase/firestore"; //Firestore を利用のためインポート
 
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -21,10 +22,10 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
-const db = getFirestore(app);
+const app = initializeApp(firebaseConfig); //firebase利用で必要不可欠  変数に代入
+const analytics = getAnalytics(app); //analytics利用 変数に代入
+const auth = getAuth(app); //認証利用 変数に代入
+const provider = new GoogleAuthProvider(); //認証利用 変数に代入
+const db = getFirestore(app); //firestore利用 変数に代入
 
 export { auth, provider, db };

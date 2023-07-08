@@ -1,33 +1,36 @@
 import React, { useState } from 'react';
 import "./CreatPost.css";
-import { addDoc, collection } from "firebase/firestore";
-import { auth } from "../firebase";
-import { db } from "../firebase";
-import { useNavigate } from 'react-router-dom';
+import { addDoc, collection } from "firebase/firestore"; //データを格納するためにaddDocをインポート。collectionは必要なものって認識
+import { auth } from "../firebase"; //ログインしたときの情報を取得したいから必要 authをインポート
+import { db } from "../firebase"; //必要
+import { useNavigate } from 'react-router-dom'; //リダイレクトしたいので、useNavigateインポート
 
 
 const CreatPost = () => {
-  const [title, setTitle] = useState();
-  const [postText, setPostText] = useState();
+  const [title, setTitle] = useState(); //タイトルの状態変数　文字を格納するために使用
+  const [postText, setPostText] = useState(); //投稿の状態変数 文字を格納するために使用
 
-    // console.log(title);
-    // console.log(postText);
+    // console.log(title); //文字取得確認
+    // console.log(postText); //文字取得確認
 
     const navigate = useNavigate();
 
     const creatPost = async () => {
-      await addDoc(collection(db, "posts"), {
-        title: title,
-        postext: postText,
-        author: {
+      await addDoc(collection(db, "posts"), { // addDocを使用して、「posts」というドキュメントに保存
+        title: title, //タイトル情報
+        postext: postText, //投稿情報
+        author: { //ログインしたときの情報を取得したい firebaseが用意してあるもの
           username: auth.currentUser.displayName,
           id: auth.currentUser.uid
         }
       });
 
-      navigate("/");
+      navigate("/"); //ホームにリダイレクト
     };
 
+  /* onChange={(e) => setTitle(e.target.value)} 今打ち込んでる文字をsetTitleに入れてる */
+  /* onChange={(e) => setPostText(e.target.value)} 今打ち込んでる文字をsetPostTextに入れてる */
+  /* onClick={creatPost} 投稿ボタンでcreatPost関数起動 */
   return (
     <div className="creatPostPage">
       <div className="postContainer">
