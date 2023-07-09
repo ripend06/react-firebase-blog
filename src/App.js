@@ -8,7 +8,7 @@ import Navbar from './components/Navbar'; //ナビゲーション コンポー�
 import { useState } from 'react'; //useStateを使用
 
 function App() {
-  const [isAuth, setIsAuth] = useState(false); //状態変数を使用　初期はfalseで、ログインしてない状態に
+  const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth")); //状態変数を使用。ログイン・ログアウトの初期値は、ローカルストレージがあれば、ログイン状態に。
 
   /* Router > Routes > Route 記述は、決まりみたいなもの　*/
   /* path=リンクのpathを定義 。element=読み込むコンポーネント */
