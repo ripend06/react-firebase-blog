@@ -14,12 +14,13 @@ function App() {
   /* path=リンクのpathを定義 。element=読み込むコンポーネント */
   /* setIsAuth={setIsAuth}　→　propsで、Loginコンポーネントに、setIsAuth変数（状態）を渡してる　*/
   /* isAuth={isAuth} ログイン・ログアウトの状態変数を、Navberコンポーネントへ、propsで渡す */
+  /* isAuth={isAuth} ログイン・ログアウトの状態変数を、CreatPostコンポーネントへ、propsで渡す */
   return (
     <Router>
       <Navbar isAuth={isAuth}/>
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/creatpost" element={<CreatPost />}></Route>
+        <Route path="/creatpost" element={<CreatPost isAuth={isAuth} />}></Route>
         <Route path="/login" element={<Login setIsAuth={setIsAuth}/>}></Route>
         <Route path="/logout" element={<Logout setIsAuth={setIsAuth}/>}></Route>
       </Routes>
