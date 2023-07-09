@@ -14,20 +14,22 @@ const Navbar = ({isAuth}) => { //ログイン・ログアウトの状態変数�
         <FontAwesomeIcon icon={faHouse} />
         ホーム
       </Link>
-      <Link to="/creatpost">
-        <FontAwesomeIcon icon={faFilePen} />
-        記事投稿
-      </Link>
       {!isAuth ? (
       <Link to="/login">
         <FontAwesomeIcon icon={faArrowRightToBracket} />
           ログイン
         </Link>
       ) : (
-        <Link to="/logout">
-          <FontAwesomeIcon icon={faArrowRightToBracket} />
-          ログアウト
-        </Link>
+        <>
+          <Link to="/logout">
+            <FontAwesomeIcon icon={faArrowRightToBracket} />
+            ログアウト
+          </Link>
+          <Link to="/creatpost">
+            <FontAwesomeIcon icon={faFilePen} />
+            記事投稿
+          </Link>
+        </>
       )}
 
     </nav>

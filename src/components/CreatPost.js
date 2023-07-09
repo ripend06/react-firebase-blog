@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./CreatPost.css";
 import { addDoc, collection } from "firebase/firestore"; //データを格納するためにaddDocをインポート。collectionは必要なものって認識
 import { auth } from "../firebase"; //ログインしたときの情報を取得したいから必要 authをインポート
@@ -6,7 +6,7 @@ import { db } from "../firebase"; //必要
 import { useNavigate } from 'react-router-dom'; //リダイレクトしたいので、useNavigateインポート
 
 
-const CreatPost = () => {
+const CreatPost = ({ isAuth }) => { //App.jsからpropsでisAuthを受け取る
   const [title, setTitle] = useState(); //タイトルの状態変数　文字を格納するために使用
   const [postText, setPostText] = useState(); //投稿の状態変数 文字を格納するために使用
 
@@ -27,6 +27,12 @@ const CreatPost = () => {
 
       navigate("/"); //ホームにリダイレクト
     };
+
+    useEffect(() => {
+      if (!isAuth) {
+        navigate("/login");
+      }
+    });
 
   /* onChange={(e) => setTitle(e.target.value)} 今打ち込んでる文字をsetTitleに入れてる */
   /* onChange={(e) => setPostText(e.target.value)} 今打ち込んでる文字をsetPostTextに入れてる */
