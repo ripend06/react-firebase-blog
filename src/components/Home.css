@@ -33,13 +33,14 @@
 }
 .nameAndDeleteButton button{
     flex: 10%;
-    background-color: #7085cb;
+    background-color: rgb(219, 42, 42);
     color: #fff;
     padding:7px 15px;
     border-radius: 3px;
     border: none;
     cursor: pointer;
     transition: all 0.3s;
+    font-weight: 700;
 }
 .nameAndDeleteButton button:hover{
     opacity: 0.6;
