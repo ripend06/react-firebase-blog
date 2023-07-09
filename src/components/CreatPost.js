@@ -29,7 +29,7 @@ const CreatPost = ({ isAuth }) => { //App.jsからpropsでisAuthを受け取る
     };
 
     useEffect(() => {
-      if (!isAuth) {
+      if (!isAuth) { //creatpostに行ったときに、ログインしていなければ、ログイン画面にリダイレクト
         navigate("/login");
       }
     });
